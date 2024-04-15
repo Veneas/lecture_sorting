@@ -50,7 +50,7 @@ def bubble_sort(list_of_numbers):
     for idx in range(size - 1):
         for idy in range(size - idx - 1):
             if list_of_numbers[idy] > list_of_numbers[idy + 1]:
-                list_of_numbers[idy], list_of_numbers[idy + 1] = list_of_numbers [idy + 1], list_of_numbers[idy]
+                list_of_numbers[idy], list_of_numbers[idy + 1] = list_of_numbers[idy + 1], list_of_numbers[idy]
                 sorted = 0
         if sorted == 1:
             break
@@ -60,7 +60,17 @@ def bubble_sort(list_of_numbers):
 
 def insertion_sort(list_of_numbers):
     measure = len(list_of_numbers)
-    for idx in range(measure):
+    for idx in range(1, measure):
+        idy = idx - 1
+        safecheck = list_of_numbers[idx]
+        while idy >= 0 and safecheck < list_of_numbers[idy]:
+            list_of_numbers[idy + 1] = list_of_numbers[idy]
+            idy = idy - 1
+            list_of_numbers[idy + 1] = safecheck
+
+    return list_of_numbers
+
+
 def main():
     pass
 
@@ -69,7 +79,9 @@ if __name__ == '__main__':
     my_data = read_data("numbers.csv")
     sorted_list = selection_sort(my_data["series_1"], "vzestupne")
     bubble_method = bubble_sort(my_data["series_2"])
+    insertion_method = insertion_sort(my_data["series_3"])
     print(my_data)
     print(sorted_list)
     print(bubble_method)
+    print(insertion_method)
     main()

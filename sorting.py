@@ -26,7 +26,7 @@ def read_data(file_name):
         return data
 
 
-def selection_sort(list_of_numbers, *direction):
+def selection_sort(list_of_numbers, direction):
     lenght = len(list_of_numbers)
     for idx in range(lenght):
         min_idx = idx
@@ -44,13 +44,32 @@ def selection_sort(list_of_numbers, *direction):
 
     return list_of_numbers
 
+
+def bubble_sort(list_of_numbers):
+    size = len(list_of_numbers)
+    for idx in range(size - 1):
+        for idy in range(size - idx - 1):
+            if list_of_numbers[idy] > list_of_numbers[idy + 1]:
+                list_of_numbers[idy], list_of_numbers[idy + 1] = list_of_numbers [idy + 1], list_of_numbers[idy]
+                sorted = 0
+        if sorted == 1:
+            break
+
+    return list_of_numbers
+
+
+def insertion_sort(list_of_numbers):
+    measure = len(list_of_numbers)
+    for idx in range(measure):
 def main():
     pass
 
 
 if __name__ == '__main__':
     my_data = read_data("numbers.csv")
-    sorted_list = selection_sort(my_data["series_1"])
+    sorted_list = selection_sort(my_data["series_1"], "vzestupne")
+    bubble_method = bubble_sort(my_data["series_2"])
     print(my_data)
     print(sorted_list)
+    print(bubble_method)
     main()
